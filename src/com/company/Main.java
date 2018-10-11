@@ -5,7 +5,8 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        guessInt(5);
+        //guessInt(5);
+        guessAI(1,100);
     }
         public static void guessInt(int n){
             Scanner in=new Scanner(System.in);
@@ -17,14 +18,31 @@ public class Main {
             }
             System.out.println("That's correct! The number is "+n);
         }
-        public static void guessAI(){
+        public static void guessAI(int min,int max){
+            int a=min;
+            int b=max;
+            int c=0;
             Scanner in=new Scanner(System.in);
-            int g=0;
-            g+=Math.floor(1+Math.random()*100);
-            System.out.print("Is the number "+g+"?");
+            int g=(a+b)/2;
+            System.out.print("Is the number "+g+"? Please answer 'too high,' 'too low,' or 'correct'");
             String ans=in.nextLine();
-            while(!(ans=="correct"){
-
+            c++;
+            while(!(ans.equalsIgnoreCase("correct"))){
+                if(ans.equalsIgnoreCase("too high")){
+                    b=g;
+                    g=(a+b)/2;
+                }else if(ans.equalsIgnoreCase("too low")){
+                    a=g;
+                    g=(a+b)/2;
+                }
+                System.out.println("Is the number "+g+"?");
+                ans=in.nextLine();
+                c++;
+            }
+            if(c>1) {
+                System.out.println("It took me " + c + " guesses to find the number!");
+            }else{
+                System.out.println("It took me " + c + " guess to find the number!");
             }
         }
 }
