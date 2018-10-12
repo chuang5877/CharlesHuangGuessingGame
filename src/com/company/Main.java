@@ -23,8 +23,11 @@ public class Main {
             int b=max;
             int c=0;
             Scanner in=new Scanner(System.in);
+            System.out.print("What's your name?");
+            String n=in.nextLine();
+            System.out.print("Hello "+n+", nice to meet you!"+'\n');
             int g=(a+b)/2;
-            System.out.print("Is the number "+g+"? Please answer 'too high,' 'too low,' or 'correct'");
+            System.out.print(n+", is the number in your head "+g+"? Please tell me if my answer is 'too high,' 'too low,' or 'correct'");
             String ans=in.nextLine();
             c++;
             while(!(ans.equalsIgnoreCase("correct"))){
@@ -35,11 +38,11 @@ public class Main {
                     a=g;
                     g=(a+b)/2;
                 }
-                System.out.println("Is the number "+g+"?");
+                System.out.println(n+", is the number "+g+"?");
                 ans=in.nextLine();
                 c++;
             }
-            if(c>1) {
+            if(c>1){
                 System.out.println("It took me " + c + " guesses to find the number!");
             }else{
                 System.out.println("It took me " + c + " guess to find the number!");
